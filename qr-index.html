@@ -312,6 +312,7 @@ textarea:focus{border-color:rgba(96,165,250,.62);box-shadow:0 0 0 4px rgba(59,13
         </div>
 
         <div class="bottom-tools">
+            <button id="backToSetupBtn">Back</button>
             <button id="disconnectBtn">Disconnect Google Drive</button>
             <button id="exitBtn">Exit</button>
         </div>
@@ -394,8 +395,10 @@ function switchTab(tab) {
 
 function showApp() {
     hide("welcomeScreen");
+    hide("setupScreen");
     show("appScreen");
     updateAccountUI();
+    window.scrollTo({top: 0, left: 0, behavior: "auto"});
 }
 
 function updateAccountUI() {
@@ -463,13 +466,16 @@ function initializeGoogle() {
 
 $("continueBtn").addEventListener("click", () => {
     hide("welcomeScreen");
+    hide("appScreen");
     show("setupScreen");
+    window.scrollTo({top: 0, left: 0, behavior: "auto"});
     initializeGoogle();
 });
 
 $("skipBtn").addEventListener("click", () => {
     showApp();
     switchTab("text");
+    $("textInput").focus();
 });
 
 $("googleBtn").addEventListener("click", () => {
@@ -565,7 +571,19 @@ $("uploadBtn").addEventListener("click", async () => {
         const file = await uploadFile(selectedFile, folderId);
 
         $("progressBar").style.width = "80%";
-        const fileUrl = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
+
+        const previewableTypes = [
+            "application/pdf",
+            "image/jpeg",
+            "image/png",
+            "image/gif",
+            "image/webp",
+            "text/plain"
+        ];
+
+        const fileUrl = previewableTypes.includes(selectedFile.type)
+            ? `https://drive.google.com/uc?export=view&id=${file.id}`
+            : `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
 
         await makePublic(file.id);
 
@@ -573,7 +591,9 @@ $("uploadBtn").addEventListener("click", async () => {
         generateQR(fileUrl);
         $("qrType").textContent = "GOOGLE DRIVE FILE";
         $("qrDescription").textContent =
-            "Your file is stored in your Google Drive. The QR contains its shareable Drive link.";
+            previewableTypes.includes(selectedFile.type)
+                ? "The QR opens the shared file directly from your Google Drive."
+                : "The QR opens the shared file from your Google Drive.";
         setDriveStatus("File uploaded successfully.", "success");
         toast("File uploaded and QR created.", "success");
 
@@ -813,9 +833,17 @@ $("exitBtn").addEventListener("click", exitApplication);
 $("welcomeExitBtn").addEventListener("click", exitApplication);
 $("setupExitBtn").addEventListener("click", exitApplication);
 
+$("backToSetupBtn").addEventListener("click", () => {
+    hide("appScreen");
+    show("setupScreen");
+    window.scrollTo({top: 0, left: 0, behavior: "auto"});
+});
+
 $("backToWelcome").addEventListener("click", () => {
-    show("welcomeScreen");
     hide("setupScreen");
+    hide("appScreen");
+    show("welcomeScreen");
+    window.scrollTo({top: 0, left: 0, behavior: "auto"});
 });
 
 
