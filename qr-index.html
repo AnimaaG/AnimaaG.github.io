@@ -181,7 +181,15 @@ textarea:focus{border-color:rgba(96,165,250,.62);box-shadow:0 0 0 4px rgba(59,13
             <div class="info-tile"><b>↗ Easy sharing</b><span>Download, copy or share your generated QR code.</span></div>
         </div>
         <button id="continueBtn" class="btn btn-primary full">Continue to QR Generator</button>
+        <div class="action-row" style="margin-top:10px">
+            <button id="welcomeExitBtn" class="btn full">Exit App</button>
+        </div>
         <div class="notice">Google Drive access is requested only when you choose the Drive upload feature.</div>
+        <div style="margin-top:16px;text-align:center;font-size:11px">
+            <a href="qr-privacy.html" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none">Privacy Policy</a>
+            <span style="color:#475569"> · </span>
+            <a href="qr-terms.html" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none">Terms of Service</a>
+        </div>
     </div>
 </section>
 
@@ -206,6 +214,12 @@ textarea:focus{border-color:rgba(96,165,250,.62);box-shadow:0 0 0 4px rgba(59,13
             <button id="googleBtn" class="btn btn-primary full">Continue with Google</button>
             <button id="skipBtn" class="btn full">Use without Google Drive</button>
             <button id="backToWelcome" class="btn full">Back</button>
+            <button id="setupExitBtn" class="btn full">Exit App</button>
+        </div>
+        <div style="margin-top:16px;text-align:center;font-size:11px">
+            <a href="qr-privacy.html" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none">Privacy Policy</a>
+            <span style="color:#475569"> · </span>
+            <a href="qr-terms.html" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none">Terms of Service</a>
         </div>
     </div>
 </section>
@@ -398,9 +412,11 @@ function updateAccountUI() {
 
 function initializeGoogle() {
     if (!window.google || !google.accounts || !google.accounts.oauth2) {
-        setTimeout(initializeGoogle, 400);
+        setTimeout(initializeGoogle, 500);
         return;
     }
+
+    if (tokenClient) return;
 
     tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: CLIENT_ID,
@@ -409,6 +425,8 @@ function initializeGoogle() {
             if (response.error) {
                 setDriveStatus("Google authorization was not completed.", "error");
                 toast("Google Drive connection failed.", "error");
+                $("googleBtn").disabled = false;
+                $("googleBtn").textContent = "Continue with Google";
                 return;
             }
 
@@ -431,7 +449,10 @@ function initializeGoogle() {
 
             updateAccountUI();
             setDriveStatus("Your Google Drive is connected.", "success");
-            toast("Google Drive connected.");
+            toast("Google Drive connected.", "success");
+            $("googleBtn").disabled = false;
+            $("googleBtn").textContent = "Continue with Google";
+            showApp();
 
             if (selectedFile) {
                 show("uploadBtn");
@@ -448,24 +469,24 @@ $("continueBtn").addEventListener("click", () => {
 
 $("skipBtn").addEventListener("click", () => {
     showApp();
+    switchTab("text");
 });
 
 $("googleBtn").addEventListener("click", () => {
     if (!tokenClient) {
         initializeGoogle();
-        toast("Google is still loading.", "error");
+        toast("Google is still loading. Try again in a moment.", "error");
         return;
     }
 
+    $("googleBtn").disabled = true;
+    $("googleBtn").textContent = "Connecting to Google...";
+
     tokenClient.requestAccessToken({
-        prompt: googleEmail ? "" : "select_account"
+        prompt: "select_account"
     });
 });
 
-$("openGeneratorBtn").addEventListener("click", () => {
-    showApp();
-    setTimeout(() => $("textInput").focus(), 150);
-});
 
 $("textTab").addEventListener("click", () => switchTab("text"));
 $("fileTab").addEventListener("click", () => switchTab("file"));
@@ -746,7 +767,7 @@ $("newBtn").addEventListener("click", () => {
     $("fileInfo").innerHTML = '<span class="file-placeholder">No file selected</span>';
     $("uploadBtn").classList.add("hidden");
     $("qrSection").classList.add("hidden");
-    $("uploadStatus").textContent = "";
+    setDriveStatus("");
     $("driveStatus").textContent = "";
     updateCapacity();
     switchTab("text");
@@ -770,21 +791,33 @@ $("disconnectBtn").addEventListener("click", () => {
     toast("Google Drive disconnected.");
 });
 
-$("exitBtn").addEventListener("click", () => {
-    accessToken = null;
-    show("welcomeScreen");
-    hide("appScreen");
-    hide("setupScreen");
-});
+async function exitApplication() {
+    if (window.cordova && navigator.app && typeof navigator.app.exitApp === "function") {
+        navigator.app.exitApp();
+        return;
+    }
+
+    if (window.Capacitor?.Plugins?.App?.exitApp) {
+        await window.Capacitor.Plugins.App.exitApp();
+        return;
+    }
+
+    if (window.close) {
+        window.close();
+    }
+
+    toast("Close this browser tab to exit.", "error");
+}
+
+$("exitBtn").addEventListener("click", exitApplication);
+$("welcomeExitBtn").addEventListener("click", exitApplication);
+$("setupExitBtn").addEventListener("click", exitApplication);
 
 $("backToWelcome").addEventListener("click", () => {
     show("welcomeScreen");
     hide("setupScreen");
 });
 
-$("backToApp").addEventListener("click", () => {
-    showApp();
-});
 
 function escapeHtml(value) {
     return value.replace(/[&<>"']/g, char => ({
