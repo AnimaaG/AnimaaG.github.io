@@ -572,18 +572,7 @@ $("uploadBtn").addEventListener("click", async () => {
 
         $("progressBar").style.width = "80%";
 
-        const previewableTypes = [
-            "application/pdf",
-            "image/jpeg",
-            "image/png",
-            "image/gif",
-            "image/webp",
-            "text/plain"
-        ];
-
-        const fileUrl = previewableTypes.includes(selectedFile.type)
-            ? `https://drive.google.com/uc?export=view&id=${file.id}`
-            : `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
+        const fileUrl = `https://drive.google.com/uc?export=view&id=${file.id}`;
 
         await makePublic(file.id);
 
