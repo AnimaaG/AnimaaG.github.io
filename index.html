@@ -4,20 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AnimaaG — Apps, Tools & Digital Projects</title>
+<title>AnimaaG — Software, Apps & Digital Tools</title>
 
-<meta name="description" content="AnimaaG is an independent developer brand creating useful apps, web tools, productivity solutions, games and digital experiences.">
-<meta name="keywords" content="AnimaaG, apps, web apps, QR Generator, Android apps, developer, digital tools">
+<meta name="description" content="AnimaaG creates practical software, Android applications, web tools, games and digital products.">
+<meta name="keywords" content="AnimaaG, software, apps, web tools, QR Generator, Android apps, digital tools">
 <meta name="author" content="AnimaaG">
 
-<meta property="og:title" content="AnimaaG — Apps, Tools & Digital Projects">
-<meta property="og:description" content="Explore apps, web tools and digital projects created by AnimaaG.">
+<meta property="og:title" content="AnimaaG — Software, Apps & Digital Tools">
+<meta property="og:description" content="Practical software, applications and digital tools created by AnimaaG.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://animaag.github.io/">
 
-<meta name="theme-color" content="#0b1020">
+<meta name="theme-color" content="#080b12">
 
-<!-- Google AdSense -->
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8074892270407372"
 crossorigin="anonymous"></script>
@@ -36,11 +35,11 @@ html {
 body {
     font-family: Arial, Helvetica, sans-serif;
     background:
-        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.18), transparent 30%),
-        radial-gradient(circle at 85% 20%, rgba(124, 58, 237, 0.16), transparent 28%),
-        #070b16;
-    color: #ffffff;
-    line-height: 1.6;
+        radial-gradient(circle at 8% 5%, rgba(59,130,246,.14), transparent 25%),
+        radial-gradient(circle at 92% 35%, rgba(139,92,246,.10), transparent 25%),
+        #080b12;
+    color: #f8fafc;
+    line-height: 1.5;
     overflow-x: hidden;
 }
 
@@ -50,532 +49,865 @@ a {
 }
 
 .container {
-    width: min(1160px, calc(100% - 40px));
+    width: min(1040px, calc(100% - 32px));
     margin: auto;
 }
 
-/* Navigation */
+/* HEADER */
 
-.navbar {
+header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(7, 11, 22, 0.82);
+    background: rgba(8,11,18,.86);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,.07);
 }
 
-.nav-inner {
-    min-height: 72px;
+.header-inner {
+    min-height: 68px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 25px;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 23px;
+    gap: 11px;
+    font-size: 21px;
     font-weight: 800;
-    letter-spacing: -0.5px;
+    letter-spacing: -.4px;
 }
 
-.brand-logo {
-    width: 42px;
-    height: 42px;
-    border-radius: 13px;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    box-shadow: 0 10px 30px rgba(37,99,235,0.3);
-    font-size: 20px;
-    font-weight: 900;
+.brand img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 28px;
-    color: #cbd5e1;
-    font-size: 14px;
+    gap: 24px;
+    color: #9ca8bb;
+    font-size: 13px;
 }
 
 .nav-links a {
-    transition: 0.25s ease;
+    transition: .2s ease;
 }
 
 .nav-links a:hover {
-    color: #ffffff;
+    color: #fff;
 }
 
-.nav-button {
-    padding: 10px 17px;
-    border-radius: 10px;
-    background: #2563eb;
-    color: white !important;
-    font-weight: 700;
+.email {
+    color: #cbd5e1;
+    font-size: 13px;
+    transition: .2s ease;
 }
 
-/* Hero */
+.email:hover {
+    color: #60a5fa;
+}
+
+/* HERO */
 
 .hero {
-    min-height: 650px;
-    display: flex;
+    padding: 72px 0 55px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
     align-items: center;
-    position: relative;
+    gap: 55px;
 }
 
-.hero-content {
-    max-width: 850px;
-    padding: 100px 0 90px;
-}
-
-.badge {
+.hero-label {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 14px;
-    border: 1px solid rgba(96,165,250,0.25);
-    background: rgba(37,99,235,0.1);
-    border-radius: 999px;
-    color: #93c5fd;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 25px;
+    color: #8fbaff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 17px;
 }
 
-.badge-dot {
+.hero-dot {
     width: 7px;
     height: 7px;
-    background: #22c55e;
     border-radius: 50%;
-    box-shadow: 0 0 12px #22c55e;
+    background: #4ade80;
+    box-shadow: 0 0 12px rgba(74,222,128,.8);
 }
 
 .hero h1 {
-    font-size: clamp(48px, 8vw, 88px);
-    line-height: 0.98;
-    letter-spacing: -4px;
-    margin-bottom: 25px;
+    font-size: clamp(42px, 7vw, 67px);
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 19px;
 }
 
-.gradient-text {
-    background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+.gradient {
+    background: linear-gradient(90deg,#60a5fa,#8b5cf6,#d946ef);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.hero p {
-    max-width: 720px;
-    color: #a8b3c7;
-    font-size: clamp(17px, 2vw, 21px);
-    margin-bottom: 35px;
+.hero-text {
+    max-width: 620px;
+    color: #9ca8bb;
+    font-size: 17px;
 }
 
-.hero-buttons {
+.hero-logo-box {
     display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
+    justify-content: center;
 }
 
-.btn {
-    display: inline-flex;
+.hero-logo-box {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 50px;
-    padding: 0 22px;
-    border-radius: 12px;
+    gap: 18px;
+}
+
+.hero-connect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-connect-title {
+    color: #f8fafc;
+    font-size: 17px;
     font-weight: 700;
-    font-size: 15px;
-    transition: 0.25s ease;
+    margin-bottom: 10px;
 }
 
-.btn-primary {
-    background: #2563eb;
-    box-shadow: 0 12px 30px rgba(37,99,235,0.25);
+.hero-connect .social-icons {
+    display: flex;
+    gap: 8px;
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    background: #3b82f6;
+.hero-connect .social-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
 }
 
-.btn-secondary {
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.04);
-    color: #e2e8f0;
+.hero-connect .social-link svg {
+    width: 18px;
+    height: 18px;
 }
 
-.btn-secondary:hover {
-    background: rgba(255,255,255,0.08);
-    transform: translateY(-2px);
+.hero-logo-box img {
+    width: 185px;
+    height: 185px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 45px rgba(59,130,246,.25));
 }
 
-/* Sections */
+.hero-logo-box img {
+    width: 185px;
+    height: 185px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 45px rgba(59,130,246,.25));
+}
+
+/* SECTION */
 
 section {
-    padding: 90px 0;
+    padding: 52px 0;
 }
 
-.section-heading {
-    margin-bottom: 40px;
+.section-title {
+    margin-bottom: 23px;
 }
 
 .section-label {
     color: #60a5fa;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 800;
-    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
 }
 
-.section-heading h2 {
-    font-size: clamp(32px, 5vw, 48px);
-    letter-spacing: -1.5px;
-    margin-bottom: 10px;
+.section-title h2 {
+    font-size: 31px;
+    letter-spacing: -1px;
 }
 
-.section-heading p {
-    color: #94a3b8;
+/* ABOUT */
+
+.about-section {
+    padding: 55px 0 45px;
+}
+
+.section-title {
+    margin-bottom: 27px;
+}
+
+.section-title p {
+    color: #8996aa;
     max-width: 680px;
+    margin-top: 8px;
+    font-size: 14px;
 }
-
-/* About */
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.35fr .65fr;
+    gap: 18px;
+}
+
+.about-main {
+    min-height: 245px;
+    display: flex;
+    align-items: center;
     gap: 25px;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.08);
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(59,130,246,.16),
+            transparent 35%
+        ),
+        rgba(255,255,255,.025);
 }
 
-.glass-card {
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.035);
-    border-radius: 22px;
-    padding: 32px;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.18);
-}
-
-.glass-card h3 {
-    font-size: 23px;
-    margin-bottom: 14px;
-}
-
-.glass-card p {
-    color: #a8b3c7;
-}
-
-.values {
-    display: grid;
-    gap: 15px;
-}
-
-.value {
-    padding: 18px;
-    border-radius: 15px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.06);
-}
-
-.value strong {
-    display: block;
-    margin-bottom: 4px;
-}
-
-.value span {
-    color: #94a3b8;
-    font-size: 14px;
-}
-
-/* Projects */
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.project-card {
-    position: relative;
-    overflow: hidden;
-    min-height: 300px;
-    border-radius: 22px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: linear-gradient(
-        145deg,
-        rgba(37,99,235,0.12),
-        rgba(255,255,255,0.035)
-    );
-    padding: 28px;
-    transition: 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-7px);
-    border-color: rgba(96,165,250,0.3);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-}
-
-.project-icon {
-    width: 58px;
-    height: 58px;
+.about-brand-mark {
+    flex: 0 0 105px;
+    width: 105px;
+    height: 105px;
     display: grid;
     place-items: center;
-    border-radius: 17px;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    font-size: 27px;
-    margin-bottom: 25px;
+    border-radius: 24px;
+    background: rgba(0,0,0,.25);
+    border: 1px solid rgba(255,255,255,.08);
 }
 
-.project-card h3 {
-    font-size: 24px;
+.about-brand-mark img {
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+}
+
+.about-main h3 {
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
-.project-card p {
-    color: #94a3b8;
+.about-main p {
+    color: #9ba8bb;
     font-size: 14px;
-    margin-bottom: 25px;
 }
 
-.project-link {
-    color: #60a5fa;
+.about-main p + p {
+    margin-top: 9px;
+}
+
+.about-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feature-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.07);
+    background: rgba(255,255,255,.025);
+}
+
+.feature-icon {
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    font-size: 19px;
     font-weight: 700;
+}
+
+.feature-icon.blue {
+    color: #60a5fa;
+    background: rgba(59,130,246,.14);
+}
+
+.feature-icon.purple {
+    color: #a78bfa;
+    background: rgba(139,92,246,.14);
+}
+
+.feature-icon.pink {
+    color: #f472b6;
+    background: rgba(236,72,153,.14);
+}
+
+.feature-card h3 {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.feature-card p {
+    color: #7f8ba0;
+    font-size: 12px;
+}
+
+
+/* SHOWCASE */
+
+.showcase-section {
+    padding: 30px 0 55px;
+}
+
+.showcase {
+    min-height: 310px;
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 55px;
+    align-items: center;
+    padding: 35px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,.07);
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(139,92,246,.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(20,31,57,.9),
+            rgba(15,18,34,.95)
+        );
+}
+
+.showcase-visual {
+    height: 235px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-glow {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(59,130,246,.35),
+        rgba(168,85,247,.3)
+    );
+    filter: blur(35px);
+}
+
+.visual-window {
+    position: relative;
+    width: 220px;
+    padding: 13px;
+    border-radius: 17px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #0b1020;
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
+    transform: rotate(-3deg);
+}
+
+.window-top {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.window-top span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #64748b;
+}
+
+.qr-preview {
+    height: 140px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.qr-grid {
+    width: 105px;
+    height: 105px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
+    padding: 8px;
+}
+
+.qr-grid span {
+    background: #111827;
+    border-radius: 2px;
+}
+
+.qr-grid span:nth-child(2),
+.qr-grid span:nth-child(4),
+.qr-grid span:nth-child(8) {
+    background: transparent;
+}
+
+.visual-lines {
+    margin-top: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.visual-lines span {
+    height: 5px;
+    border-radius: 10px;
+    background: #1e293b;
+}
+
+.visual-lines span:first-child {
+    width: 70%;
+}
+
+.visual-lines span:nth-child(2) {
+    width: 90%;
+}
+
+.visual-lines span:last-child {
+    width: 45%;
+}
+
+.showcase-content h2 {
+    font-size: 31px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.showcase-content > p {
+    max-width: 510px;
+    color: #98a5b8;
     font-size: 14px;
 }
 
-.project-coming {
-    background: rgba(255,255,255,0.025);
+.check-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
 }
 
-.project-coming .project-icon {
-    background: rgba(255,255,255,0.08);
+.check-list div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 11px;
+    border-radius: 9px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.06);
 }
 
-/* Google Play */
-
-.play-section {
-    background: rgba(255,255,255,0.025);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+.check-list span {
+    color: #4ade80;
+    font-size: 12px;
 }
 
-.play-card {
+.check-list p {
+    color: #aeb8c9;
+    font-size: 11px;
+}
+
+
+/* TOOLS */
+
+.tools-section {
+    padding: 55px 0;
+    border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.tool-card {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    align-items: center;
+    gap: 25px;
+    padding: 23px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.08);
+    background:
+        radial-gradient(
+            circle at 5% 50%,
+            rgba(37,99,235,.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            120deg,
+            rgba(20,30,57,.9),
+            rgba(26,20,48,.75)
+        );
+    transition: .25s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(96,165,250,.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
+}
+
+.tool-preview {
+    height: 125px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(99,102,241,.2),
+            transparent 65%
+        ),
+        #0b1020;
+    border: 1px solid rgba(255,255,255,.07);
+}
+
+.mini-qr {
+    width: 76px;
+    height: 76px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 4px;
+    padding: 6px;
+    background: white;
+    border-radius: 5px;
+}
+
+.mini-qr div {
+    background: #111827;
+    border-radius: 1px;
+}
+
+.mini-qr div:nth-child(2),
+.mini-qr div:nth-child(6),
+.mini-qr div:nth-child(8) {
+    background: transparent;
+}
+
+.preview-badge {
+    position: absolute;
+    right: 9px;
+    bottom: 9px;
+    padding: 4px 7px;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.tool-type {
+    color: #60a5fa;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+
+.tool-content h3 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.tool-content p {
+    color: #96a3b7;
+    font-size: 13px;
+    max-width: 560px;
+}
+
+.tool-tags {
+    display: flex;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.tool-tags span {
+    padding: 5px 8px;
+    border-radius: 7px;
+    background: rgba(255,255,255,.05);
+    color: #8d9aae;
+    font-size: 10px;
+}
+
+.tool-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#2563eb,#4f46e5);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: .2s ease;
+}
+
+.tool-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37,99,235,.25);
+}
+
+.tool-button span {
+    font-size: 16px;
+}
+
+
+/* CONNECT */
+
+.connect-section {
+    padding: 30px 0 55px;
+}
+
+.connect-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
-    padding: 38px;
-    border-radius: 24px;
-    background: linear-gradient(120deg, rgba(37,99,235,0.16), rgba(124,58,237,0.12));
-    border: 1px solid rgba(255,255,255,0.08);
+    padding: 28px 32px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.07);
+    background:
+        linear-gradient(
+            110deg,
+            rgba(59,130,246,.09),
+            rgba(139,92,246,.09)
+        ),
+        rgba(255,255,255,.025);
 }
 
-.play-card h2 {
-    font-size: 32px;
-    margin-bottom: 8px;
+.connect-content h2 {
+    font-size: 27px;
+    margin-bottom: 4px;
 }
 
-.play-card p {
-    color: #a8b3c7;
-    max-width: 650px;
-}
-
-/* Social */
-
-.social-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.social-card {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 23px;
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.035);
-    transition: 0.25s ease;
-}
-
-.social-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255,255,255,0.06);
-}
-
-.social-icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 13px;
-    display: grid;
-    place-items: center;
-    background: rgba(255,255,255,0.08);
-    font-size: 19px;
-}
-
-.social-card strong {
-    display: block;
-}
-
-.social-card span {
-    color: #94a3b8;
+.connect-content p {
+    color: #8f9caf;
     font-size: 13px;
 }
 
-/* CTA */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-.cta {
+.social-link {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.09);
+    background: rgba(255,255,255,.045);
+    transition: .25s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,.09);
+}
+
+.social-link svg {
+    width: 23px;
+    height: 23px;
+    fill: currentColor;
+}
+
+.instagram {
+    color: #f472b6;
+}
+
+.facebook {
+    color: #60a5fa;
+}
+
+.play {
+    color: #4ade80;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding: 20px 0;
     text-align: center;
 }
 
-.cta-box {
-    padding: 70px 30px;
-    border-radius: 28px;
-    background:
-        radial-gradient(circle at 50% 0%, rgba(96,165,250,0.18), transparent 45%),
-        rgba(255,255,255,0.035);
-    border: 1px solid rgba(255,255,255,0.08);
+footer p {
+    color: #667085;
+    font-size: 11px;
 }
 
-.cta-box h2 {
-    font-size: clamp(34px, 5vw, 52px);
-    margin-bottom: 14px;
-}
+/* MOBILE */
 
-.cta-box p {
-    color: #94a3b8;
-    margin-bottom: 28px;
-}
+@media (max-width: 760px) {
 
-/* Footer */
+    .header-inner {
+        min-height: 62px;
+    }
 
-footer {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 35px 0;
-    color: #94a3b8;
-}
-
-.footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-}
-
-.footer-brand {
-    color: white;
-    font-weight: 800;
-}
-
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 13px;
-}
-
-.footer-links a:hover {
-    color: white;
-}
-
-.copyright {
-    font-size: 12px;
-    margin-top: 7px;
-}
-
-/* Responsive */
-
-@media (max-width: 850px) {
+    .header-right {
+        gap: 0;
+    }
 
     .nav-links {
         display: none;
     }
 
-    .hero {
-        min-height: auto;
+    .email {
+        font-size: 11px;
     }
 
-    .hero-content {
-        padding: 80px 0;
+    .hero {
+        padding: 52px 0 45px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .hero-logo-box {
+        order: -1;
+    }
+
+    .hero-logo-box img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .hero-text {
+        margin: auto;
+        font-size: 15px;
     }
 
     .hero h1 {
+        font-size: 47px;
         letter-spacing: -2px;
     }
 
-    .about-grid,
-    .project-grid,
-    .social-grid {
+    .about-grid {
         grid-template-columns: 1fr;
     }
 
-    .play-card {
-        flex-direction: column;
-        align-items: flex-start;
+    .about-main {
+        min-height: auto;
     }
 
-    section {
-        padding: 70px 0;
-    }
-}
-
-@media (max-width: 500px) {
-
-    .container {
-        width: min(100% - 28px, 1160px);
+    .showcase {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 25px;
     }
 
-    .nav-inner {
-        min-height: 64px;
+    .showcase-visual {
+        height: 190px;
     }
 
-    .brand {
-        font-size: 20px;
+    .showcase-content h2 {
+        font-size: 27px;
     }
 
-    .brand-logo {
-        width: 38px;
-        height: 38px;
+    .tool-card {
+        grid-template-columns: 1fr;
     }
 
-    .hero-content {
-        padding: 65px 0;
+    .tool-preview {
+        height: 150px;
     }
 
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .btn {
+    .tool-button {
+        justify-content: center;
         width: 100%;
     }
 
-    .glass-card,
-    .project-card {
-        padding: 24px;
-    }
-
-    .play-card {
-        padding: 28px;
-    }
-
-    .footer-inner {
+    .connect-box {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .social-icons {
+        width: 100%;
+    }
+
+    .social-link {
+        flex: 1;
+    }
+
+    section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .container {
+        width: calc(100% - 24px);
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .brand img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .email {
+        font-size: 11px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-logo-box img {
+        width: 95px;
+        height: 95px;
+    }
+
+    .section-title h2 {
+        font-size: 27px;
     }
 }
 </style>
@@ -583,292 +915,182 @@ footer {
 
 <body>
 
-<header class="navbar">
-    <div class="container nav-inner">
+<header>
+    <div class="container header-inner">
 
         <a href="#top" class="brand">
-            <span class="brand-logo">A</span>
+            <img src="animaag.png" alt="AnimaaG">
             <span>AnimaaG</span>
         </a>
 
-        <nav class="nav-links">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#apps">Apps</a>
-            <a href="#connect">Connect</a>
-            <a href="/QR-Generator/qr-index.html" class="nav-button">QR Generator</a>
-        </nav>
+        <div class="header-right">
 
-    </div>
-</header>
-
-<main id="top">
-
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-
-            <div class="badge">
-                <span class="badge-dot"></span>
-                Independent Developer & Digital Creator
-            </div>
-
-            <h1>
-                Building useful
-                <span class="gradient-text">digital experiences.</span>
-            </h1>
-
-            <p>
-                AnimaaG is an independent development brand focused on
-                creating practical apps, web tools, productivity solutions,
-                games and experimental digital products.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    Explore Projects
-                </a>
-
-                <a href="/QR-Generator/qr-index.html" class="btn btn-secondary">
-                    Open QR Generator
-                </a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section id="about">
-    <div class="container">
-
-        <div class="section-heading">
-            <div class="section-label">About AnimaaG</div>
-            <h2>Ideas into useful products.</h2>
-            <p>
-                AnimaaG is a personal technology and software development
-                brand creating applications and digital tools designed
-                around practical everyday use.
-            </p>
-        </div>
-
-        <div class="about-grid">
-
-            <div class="glass-card">
-                <h3>What is AnimaaG?</h3>
-
-                <p>
-                    AnimaaG develops software products across web and
-                    Android platforms. The projects range from lightweight
-                    browser-based utilities to mobile applications,
-                    productivity tools, games and experimental technology.
-                </p>
-
-                <br>
-
-                <p>
-                    The goal is simple: build software that is useful,
-                    accessible and easy to understand while continuously
-                    exploring new ideas and technologies.
-                </p>
-            </div>
-
-            <div class="glass-card values">
-
-                <div class="value">
-                    <strong>Web Applications</strong>
-                    <span>Browser-based tools designed for practical use.</span>
-                </div>
-
-                <div class="value">
-                    <strong>Android Applications</strong>
-                    <span>Mobile applications published through Google Play.</span>
-                </div>
-
-                <div class="value">
-                    <strong>Developer Projects</strong>
-                    <span>Experiments, utilities and technology-focused projects.</span>
-                </div>
-
-                <div class="value">
-                    <strong>Continuous Development</strong>
-                    <span>New applications and projects are added over time.</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-
-<section id="projects">
-    <div class="container">
-
-        <div class="section-heading">
-            <div class="section-label">Featured Project</div>
-            <h2>Explore AnimaaG projects.</h2>
-            <p>
-                Start with the current featured project and check back as
-                new applications and tools are released.
-            </p>
-        </div>
-
-        <div class="project-grid">
-
-            <article class="project-card">
-
-                <div class="project-icon">▣</div>
-
-                <h3>Local QR Generator</h3>
-
-                <p>
-                    Generate QR codes directly in your browser.
-                    Small QR data can be processed locally, while
-                    large files can be represented using shareable
-                    cloud-storage URLs.
-                </p>
-
-                <a href="/QR-Generator/qr-index.html" class="project-link">
-                    Open QR Generator →
-                </a>
-
-            </article>
-
-
-            <article class="project-card project-coming">
-
-                <div class="project-icon">+</div>
-
-                <h3>More Projects</h3>
-
-                <p>
-                    Additional applications, utilities and digital
-                    products are currently being developed.
-                </p>
-
-                <span class="project-link">
-                    Coming soon
-                </span>
-
-            </article>
-
-
-            <article class="project-card project-coming">
-
-                <div class="project-icon">✦</div>
-
-                <h3>Future Experiments</h3>
-
-                <p>
-                    New ideas and experimental technology projects
-                    will be introduced as development progresses.
-                </p>
-
-                <span class="project-link">
-                    In development
-                </span>
-
-            </article>
-
-        </div>
-
-    </div>
-</section>
-
-
-<section id="apps" class="play-section">
-    <div class="container">
-
-        <div class="play-card">
-
-            <div>
-                <div class="section-label">Google Play</div>
-
-                <h2>AnimaaG Apps</h2>
-
-                <p>
-                    Explore Android applications published by AnimaaG
-                    on Google Play. This page will be updated as new
-                    applications are released.
-                </p>
-            </div>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#tools">Tools</a>
+            </nav>
 
             <a
-                href="https://play.google.com/store/apps/dev?id=5292838176432126848"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-primary">
-                View on Google Play →
+                href="mailto:aniketghadi010@gmail.com"
+                class="email">
+                aniketghadi010@gmail.com
             </a>
 
         </div>
 
     </div>
-</section>
+</header>
 
 
-<section id="connect">
-    <div class="container">
+<main id="top">
 
-        <div class="section-heading">
-            <div class="section-label">Connect</div>
-            <h2>Follow AnimaaG.</h2>
-            <p>
-                Follow the official AnimaaG social profiles for project
-                updates, new releases and development content.
-            </p>
-        </div>
+    <section class="hero">
+        <div class="container hero-grid">
 
-        <div class="social-grid">
+            <div>
+
+                <div class="hero-label">
+                    <span class="hero-dot"></span>
+                    Software • Apps • Digital Tools
+                </div>
+
+                <h1>
+                    <span class="gradient">Building useful</span><br>
+                    digital products.
+                </h1>
+
+                <p class="hero-text">
+                    AnimaaG is an independent software development brand
+                    creating practical applications, web tools, games and
+                    digital experiences designed for everyday use.
+                </p>
+
+            </div>
+
+            <div class="hero-logo-box">
+
+    <div class="hero-connect">
+
+        <div class="section-label">ANIMAAG ONLINE</div>
+
+        <div class="hero-connect-title">Connect</div>
+
+        <div class="social-icons">
 
             <a
                 href="https://www.instagram.com/animaag1029/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-card">
+                class="social-link instagram"
+                aria-label="Instagram">
 
-                <div class="social-icon">◎</div>
-
-                <div>
-                    <strong>Instagram</strong>
-                    <span>@animaag1029</span>
-                </div>
+                <svg viewBox="0 0 24 24">
+                    <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-3-3z"/>
+                </svg>
 
             </a>
-
 
             <a
                 href="https://www.facebook.com/share/19WkU6dErS/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-card">
+                class="social-link facebook"
+                aria-label="Facebook">
 
-                <div class="social-icon">f</div>
-
-                <div>
-                    <strong>Facebook</strong>
-                    <span>AnimaaG</span>
-                </div>
+                <svg viewBox="0 0 24 24">
+                    <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.87.24-1.46 1.5-1.46h1.7V4.95c-.3-.04-1.33-.13-2.54-.13-2.51 0-4.23 1.53-4.23 4.34V11H7.1v3h2.83v8h3.57z"/>
+                </svg>
 
             </a>
-
 
             <a
                 href="https://play.google.com/store/apps/dev?id=5292838176432126848"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-card">
+                class="social-link play"
+                aria-label="Google Play">
 
-                <div class="social-icon">▶</div>
-
-                <div>
-                    <strong>Google Play</strong>
-                    <span>AnimaaG Developer</span>
-                </div>
+                <svg viewBox="0 0 24 24">
+                    <path d="M3.5 2.7c-.31.33-.5.84-.5 1.48v15.64c0 .64.19 1.15.5 1.48L13.05 12 3.5 2.7zm10.25 10.02L5.02 4.2l9.8 5.58L16.9 12l-3.15.72zm1.07.97l3.08 1.75-10.03 5.7 6.95-7.45zm4.02-2.28l2.07 1.18c.68.39.68.97 0 1.36l-2.07 1.18L15.67 12l3.17-.59z"/>
+                </svg>
 
             </a>
+
+        </div>
+
+    </div>
+
+    <img src="animaag.png" alt="AnimaaG">
+
+</div>
+
+        </div>
+    </section>
+
+
+<section id="about" class="about-section">
+    <div class="container">
+
+        <div class="section-title">
+            <div class="section-label">ABOUT ANIMAAG</div>
+            <h2>Technology made useful.</h2>
+            <p>
+                AnimaaG creates software and digital products designed
+                to solve practical problems without unnecessary complexity.
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-main">
+                <div class="about-brand-mark">
+                    <img src="animaag.png" alt="AnimaaG">
+                </div>
+
+                <div>
+                    <h3>Independent software development</h3>
+
+                    <p>
+                        AnimaaG is an independent technology brand focused
+                        on web tools, Android applications, productivity
+                        software, games and other digital experiences.
+                    </p>
+
+                    <p>
+                        Every project is built around a simple idea:
+                        useful software should be easy to understand
+                        and easy to use.
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-features">
+
+                <div class="feature-card">
+                    <div class="feature-icon blue">✦</div>
+                    <div>
+                        <h3>Practical</h3>
+                        <p>Built around real everyday use cases.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon purple">◈</div>
+                    <div>
+                        <h3>Simple</h3>
+                        <p>Clean interfaces without unnecessary complexity.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon pink">⌁</div>
+                    <div>
+                        <h3>Digital</h3>
+                        <p>Web, Android and browser-based experiences.</p>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
@@ -876,63 +1098,157 @@ footer {
 </section>
 
 
-<section class="cta">
+<section class="showcase-section">
     <div class="container">
 
-        <div class="cta-box">
+        <div class="showcase">
 
-            <h2>Explore AnimaaG.</h2>
+            <div class="showcase-visual">
 
-            <p>
-                Discover current projects and follow the development
-                of new applications and digital tools.
-            </p>
+                <div class="visual-glow"></div>
 
-            <a href="/QR-Generator/qr-index.html" class="btn btn-primary">
-                Try Local QR Generator
-            </a>
+                <div class="visual-window">
+
+                    <div class="window-top">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="qr-preview">
+                        <div class="qr-grid">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="visual-lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="showcase-content">
+
+                <div class="section-label">BUILT FOR EVERYDAY USE</div>
+
+                <h2>Useful tools without the clutter.</h2>
+
+                <p>
+                    AnimaaG focuses on making digital tools that get out
+                    of the way and let users complete what they came to do.
+                </p>
+
+                <div class="check-list">
+
+                    <div>
+                        <span>✓</span>
+                        <p>Focused interfaces</p>
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        <p>Fast and lightweight experiences</p>
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        <p>Designed for web and mobile users</p>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
+</section>
+
+
+<section id="tools" class="tools-section">
+
+    <div class="container">
+
+        <div class="section-title">
+            <div class="section-label">TOOLS</div>
+            <h2>Explore AnimaaG tools.</h2>
+            <p>
+                Useful browser-based tools created for simple everyday tasks.
+            </p>
+        </div>
+
+        <article class="tool-card">
+
+            <div class="tool-preview">
+
+                <div class="mini-qr">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <span class="preview-badge">QR</span>
+
+            </div>
+
+            <div class="tool-content">
+
+                <div class="tool-type">
+                    WEB TOOL
+                </div>
+
+                <h3>Local QR Generator</h3>
+
+                <p>
+                    Create QR codes directly in your browser with a
+                    clean and lightweight interface.
+                </p>
+
+                <div class="tool-tags">
+                    <span>QR Codes</span>
+                    <span>Browser</span>
+                    <span>Simple</span>
+                </div>
+
+            </div>
+
+            <a
+                href="/QR-Generator/qr-index.html"
+                class="tool-button">
+                Open Tool
+                <span>→</span>
+            </a>
+
+        </article>
+
+    </div>
+
 </section>
 
 </main>
 
 
 <footer>
-    <div class="container footer-inner">
-
-        <div>
-            <div class="footer-brand">AnimaaG</div>
-
-            <div class="copyright">
-                © 2026 AnimaaG. All rights reserved.
-            </div>
-        </div>
-
-        <div class="footer-links">
-
-            <a href="/QR-Generator/qr-index.html">
-                QR Generator
-            </a>
-
-            <a
-                href="https://www.instagram.com/animaag1029/"
-                target="_blank"
-                rel="noopener noreferrer">
-                Instagram
-            </a>
-
-            <a
-                href="https://www.facebook.com/share/19WkU6dErS/"
-                target="_blank"
-                rel="noopener noreferrer">
-                Facebook
-            </a>
-
-        </div>
-
+    <div class="container">
+        <p>© 2026 AnimaaG. All rights reserved.</p>
     </div>
 </footer>
 
