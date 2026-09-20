@@ -307,7 +307,9 @@ section {
 .about-brand-mark img {
     width: 82px;
     height: 82px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
 }
 
 .about-main h3 {
@@ -324,59 +326,208 @@ section {
     margin-top: 9px;
 }
 
-.about-features {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.feature-card {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 18px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,.07);
-    background: rgba(255,255,255,.025);
-}
-
-.feature-icon {
-    width: 43px;
-    height: 43px;
-    flex: 0 0 43px;
+.animaag-3d-scene {
+    min-height: 245px;
+    position: relative;
     display: grid;
     place-items: center;
-    border-radius: 12px;
-    font-size: 19px;
-    font-weight: 700;
+    perspective: 900px;
+    overflow: hidden;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at center, rgba(59,130,246,.13), transparent 48%),
+        rgba(255,255,255,.012);
 }
 
-.feature-icon.blue {
-    color: #60a5fa;
-    background: rgba(59,130,246,.14);
+.animaag-core {
+    width: 112px;
+    height: 112px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+    animation: coreFloat 5s ease-in-out infinite;
 }
 
-.feature-icon.purple {
-    color: #a78bfa;
-    background: rgba(139,92,246,.14);
+.animaag-core img {
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+    border-radius: 22px;
+    position: relative;
+    z-index: 5;
+    filter: drop-shadow(0 0 22px rgba(59,130,246,.45));
 }
 
-.feature-icon.pink {
-    color: #f472b6;
-    background: rgba(236,72,153,.14);
+.animaag-ring {
+    position: absolute;
+    width: 205px;
+    height: 72px;
+    border: 1px solid rgba(96,165,250,.65);
+    border-radius: 50%;
+    transform-style: preserve-3d;
 }
 
-.feature-card h3 {
-    font-size: 14px;
-    margin-bottom: 2px;
+.animaag-ring:nth-child(2) {
+    transform: rotateX(65deg) rotateZ(15deg);
+    animation: ringOne 7s linear infinite;
 }
 
-.feature-card p {
-    color: #7f8ba0;
-    font-size: 12px;
+.animaag-ring:nth-child(3) {
+    width: 190px;
+    height: 190px;
+    border-color: rgba(217,70,239,.45);
+    transform: rotateY(65deg) rotateZ(20deg);
+    animation: ringTwo 9s linear infinite;
 }
 
+.animaag-ring:nth-child(4) {
+    width: 220px;
+    height: 82px;
+    border-color: rgba(139,92,246,.55);
+    transform: rotateX(72deg) rotateZ(-35deg);
+    animation: ringThree 11s linear infinite;
+}
+
+.animaag-node {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #60a5fa;
+    box-shadow: 0 0 14px rgba(96,165,250,.9);
+}
+
+.animaag-node.one {
+    top: 24px;
+    right: 12px;
+}
+
+.animaag-node.two {
+    bottom: 18px;
+    left: 22px;
+    background: #d946ef;
+    box-shadow: 0 0 14px rgba(217,70,239,.9);
+}
+
+.animaag-node.three {
+    top: 48%;
+    left: 4px;
+    background: #8b5cf6;
+    box-shadow: 0 0 14px rgba(139,92,246,.9);
+}
+
+.animaag-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #94a3b8;
+    opacity: .65;
+    animation: particleFloat 4s ease-in-out infinite;
+}
+
+.animaag-particle:nth-child(6) {
+    top: 24%;
+    left: 18%;
+}
+
+.animaag-particle:nth-child(7) {
+    top: 18%;
+    right: 18%;
+    animation-delay: 1s;
+}
+
+.animaag-particle:nth-child(8) {
+    bottom: 20%;
+    right: 22%;
+    animation-delay: 2s;
+}
+
+.animaag-particle:nth-child(9) {
+    bottom: 17%;
+    left: 17%;
+    animation-delay: 3s;
+}
+
+.animaag-core-label {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #7ea7d9;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+@keyframes coreFloat {
+    0%,100% {
+        transform: translateY(0) rotateY(-4deg);
+    }
+    50% {
+        transform: translateY(-9px) rotateY(4deg);
+    }
+}
+
+@keyframes ringOne {
+    from {
+        transform: rotateX(65deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateX(65deg) rotateZ(360deg);
+    }
+}
+
+@keyframes ringTwo {
+    from {
+        transform: rotateY(65deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateY(65deg) rotateZ(-360deg);
+    }
+}
+
+@keyframes ringThree {
+    from {
+        transform: rotateX(72deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateX(72deg) rotateZ(360deg);
+    }
+}
+
+@keyframes particleFloat {
+    0%,100% {
+        transform: translateY(0) scale(1);
+        opacity: .35;
+    }
+    50% {
+        transform: translateY(-12px) scale(1.4);
+        opacity: .9;
+    }
+}
+
+@media (max-width:760px) {
+    .animaag-3d-scene {
+        min-height: 270px;
+        margin-top: 10px;
+    }
+
+    .animaag-ring:nth-child(2) {
+        width: 185px;
+    }
+
+    .animaag-ring:nth-child(3) {
+        width: 170px;
+        height: 170px;
+    }
+
+    .animaag-ring:nth-child(4) {
+        width: 200px;
+    }
+}
 
 /* SHOWCASE */
 
@@ -554,7 +705,6 @@ section {
 }
 
 .tool-card{
-    width:100%;
     display:flex;
     flex-direction:column;
     padding:16px;
@@ -574,56 +724,6 @@ section {
     transform: translateY(-3px);
     border-color: rgba(96,165,250,.3);
     box-shadow: 0 20px 50px rgba(0,0,0,.25);
-}
-
-.tool-preview{
-    height:105px;
-    position:relative;
-    display:grid;
-    place-items:center;
-    border-radius:14px;
-    background:
-        radial-gradient(
-            circle,
-            rgba(99,102,241,.2),
-            transparent 65%
-        ),
-        #0b1020;
-    border:1px solid rgba(255,255,255,.07);
-}
-
-.mini-qr {
-    width: 64px;
-    height: 64px;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 4px;
-    padding: 6px;
-    background: white;
-    border-radius: 5px;
-}
-
-.mini-qr div {
-    background: #111827;
-    border-radius: 1px;
-}
-
-.mini-qr div:nth-child(2),
-.mini-qr div:nth-child(6),
-.mini-qr div:nth-child(8) {
-    background: transparent;
-}
-
-.preview-badge {
-    position: absolute;
-    right: 9px;
-    bottom: 9px;
-    padding: 4px 7px;
-    border-radius: 6px;
-    background: #2563eb;
-    color: white;
-    font-size: 9px;
-    font-weight: 800;
 }
 
 .tool-type {
@@ -791,6 +891,40 @@ section {
 .app-store-button span{
     font-size:15px;
 }
+
+.tool-icon{
+    width:58px;
+    height:58px;
+    flex:0 0 58px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:#111827;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.tool-icon .mini-qr{
+    width:40px;
+    height:40px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:3px;
+    padding:5px;
+    background:#fff;
+    border-radius:6px;
+}
+
+.tool-icon .mini-qr div{
+    background:#111827;
+    border-radius:1px;
+}
+
+.tool-icon .mini-qr div:nth-child(2),
+.tool-icon .mini-qr div:nth-child(6),
+.tool-icon .mini-qr div:nth-child(8){
+    background:transparent;
+}
+
 
 @media (max-width:760px){
     .digital-grid{
@@ -1149,7 +1283,7 @@ footer p {
 
             <div class="about-main">
                 <div class="about-brand-mark">
-                    <img src="animaag.png" alt="AnimaaG">
+                    <img src="animaag_logo.png" alt="AnimaaG">
                 </div>
 
                 <div>
@@ -1169,31 +1303,28 @@ footer p {
                 </div>
             </div>
 
-            <div class="about-features">
+                        <div class="animaag-3d-scene">
 
-                <div class="feature-card">
-                    <div class="feature-icon blue">✦</div>
-                    <div>
-                        <h3>Practical</h3>
-                        <p>Built around real everyday use cases.</p>
-                    </div>
+                <div class="animaag-core">
+
+                    <div class="animaag-ring"></div>
+                    <div class="animaag-ring"></div>
+                    <div class="animaag-ring"></div>
+
+                    <img src="animaag.png" alt="AnimaaG">
+
+                    <span class="animaag-node one"></span>
+                    <span class="animaag-node two"></span>
+                    <span class="animaag-node three"></span>
+
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon purple">◈</div>
-                    <div>
-                        <h3>Simple</h3>
-                        <p>Clean interfaces without unnecessary complexity.</p>
-                    </div>
-                </div>
+                <span class="animaag-particle"></span>
+                <span class="animaag-particle"></span>
+                <span class="animaag-particle"></span>
+                <span class="animaag-particle"></span>
 
-                <div class="feature-card">
-                    <div class="feature-icon pink">⌁</div>
-                    <div>
-                        <h3>Digital</h3>
-                        <p>Web, Android and browser-based experiences.</p>
-                    </div>
-                </div>
+                <div class="animaag-core-label">ANIMAAG DIGITAL CORE</div>
 
             </div>
 
@@ -1216,55 +1347,48 @@ footer p {
 
         <div class="digital-grid">
 
-        <article class="tool-card">
+<article class="tool-card">
 
-            <div class="tool-preview">
-
-                <div class="mini-qr">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-
-                <span class="preview-badge">QR</span>
-
+    <div class="app-header">
+        <div class="tool-icon">
+            <div class="mini-qr">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
+        </div>
 
-            <div class="tool-content">
+        <div>
+            <div class="app-name">Local QR Generator</div>
+            <div class="app-platform">WEB TOOL</div>
+        </div>
+    </div>
 
-                <div class="tool-type">
-                    WEB TOOL
-                </div>
+    <p class="app-description">
+        Create QR codes directly in your browser with a clean,
+        lightweight interface for everyday use.
+    </p>
 
-                <h3>Local QR Generator</h3>
+    <div class="app-meta">
+        <span>QR Codes</span>
+        <span>Browser</span>
+        <span>Offline</span>
+    </div>
 
-                <p>
-                    Create QR codes directly in your browser with a
-                    clean and lightweight interface.
-                </p>
+    <a
+        href="QR-Generator/"
+        class="app-store-button">
+        Open Tool
+        <span>↗</span>
+    </a>
 
-                <div class="tool-tags">
-                    <span>QR Codes</span>
-                    <span>Browser</span>
-                    <span>Simple</span>
-                </div>
-
-            </div>
-
-            <a
-                href="QR-Generator/"  
-                class="tool-button">
-                Open Tool
-                <span>→</span>
-            </a>
-
-        </article>
+</article>
 
             <article class="app-card">
                 <div class="app-header">
