@@ -22,6 +22,8 @@ src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pu
 crossorigin="anonymous"></script>
 
 <style>
+   @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@500;700;800&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -326,206 +328,85 @@ section {
     margin-top: 9px;
 }
 
-.animaag-3d-scene {
+.animaag-video-scene {
     min-height: 245px;
     position: relative;
-    display: grid;
-    place-items: center;
-    perspective: 900px;
     overflow: hidden;
     border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.07);
+    background: #080b12;
+    box-shadow:
+        inset 0 0 50px rgba(59,130,246,.06),
+        0 20px 50px rgba(0,0,0,.2);
+}
+
+.animaag-intro-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.animaag-video-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
     background:
-        radial-gradient(circle at center, rgba(59,130,246,.13), transparent 48%),
-        rgba(255,255,255,.012);
+        linear-gradient(
+            180deg,
+            rgba(8,11,18,.04),
+            rgba(8,11,18,.18)
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            transparent 35%,
+            rgba(8,11,18,.2) 100%
+        );
 }
 
-.animaag-core {
-    width: 112px;
-    height: 112px;
-    position: relative;
-    display: grid;
-    place-items: center;
-    transform-style: preserve-3d;
-    animation: coreFloat 5s ease-in-out infinite;
-}
-
-.animaag-core img {
-    width: 82px;
-    height: 82px;
-    object-fit: contain;
-    border-radius: 22px;
-    position: relative;
-    z-index: 5;
-    filter: drop-shadow(0 0 22px rgba(59,130,246,.45));
-}
-
-.animaag-ring {
+.animaag-video-caption {
     position: absolute;
-    width: 205px;
-    height: 72px;
-    border: 1px solid rgba(96,165,250,.65);
-    border-radius: 50%;
-    transform-style: preserve-3d;
+    left: 18px;
+    right: 18px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    z-index: 2;
+    pointer-events: none;
 }
 
-.animaag-ring:nth-child(2) {
-    transform: rotateX(65deg) rotateZ(15deg);
-    animation: ringOne 7s linear infinite;
+.animaag-video-caption span {
+    font-family: "Bungee", sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #f8fafc;
+    text-shadow: 0 0 15px rgba(96,165,250,.55);
 }
 
-.animaag-ring:nth-child(3) {
-    width: 190px;
-    height: 190px;
-    border-color: rgba(217,70,239,.45);
-    transform: rotateY(65deg) rotateZ(20deg);
-    animation: ringTwo 9s linear infinite;
-}
-
-.animaag-ring:nth-child(4) {
-    width: 220px;
-    height: 82px;
-    border-color: rgba(139,92,246,.55);
-    transform: rotateX(72deg) rotateZ(-35deg);
-    animation: ringThree 11s linear infinite;
-}
-
-.animaag-node {
-    position: absolute;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #60a5fa;
-    box-shadow: 0 0 14px rgba(96,165,250,.9);
-}
-
-.animaag-node.one {
-    top: 24px;
-    right: 12px;
-}
-
-.animaag-node.two {
-    bottom: 18px;
-    left: 22px;
-    background: #d946ef;
-    box-shadow: 0 0 14px rgba(217,70,239,.9);
-}
-
-.animaag-node.three {
-    top: 48%;
-    left: 4px;
-    background: #8b5cf6;
-    box-shadow: 0 0 14px rgba(139,92,246,.9);
-}
-
-.animaag-particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #94a3b8;
-    opacity: .65;
-    animation: particleFloat 4s ease-in-out infinite;
-}
-
-.animaag-particle:nth-child(6) {
-    top: 24%;
-    left: 18%;
-}
-
-.animaag-particle:nth-child(7) {
-    top: 18%;
-    right: 18%;
-    animation-delay: 1s;
-}
-
-.animaag-particle:nth-child(8) {
-    bottom: 20%;
-    right: 22%;
-    animation-delay: 2s;
-}
-
-.animaag-particle:nth-child(9) {
-    bottom: 17%;
-    left: 17%;
-    animation-delay: 3s;
-}
-
-.animaag-core-label {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #7ea7d9;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    white-space: nowrap;
-}
-
-@keyframes coreFloat {
-    0%,100% {
-        transform: translateY(0) rotateY(-4deg);
-    }
-    50% {
-        transform: translateY(-9px) rotateY(4deg);
-    }
-}
-
-@keyframes ringOne {
-    from {
-        transform: rotateX(65deg) rotateZ(0deg);
-    }
-    to {
-        transform: rotateX(65deg) rotateZ(360deg);
-    }
-}
-
-@keyframes ringTwo {
-    from {
-        transform: rotateY(65deg) rotateZ(0deg);
-    }
-    to {
-        transform: rotateY(65deg) rotateZ(-360deg);
-    }
-}
-
-@keyframes ringThree {
-    from {
-        transform: rotateX(72deg) rotateZ(0deg);
-    }
-    to {
-        transform: rotateX(72deg) rotateZ(360deg);
-    }
-}
-
-@keyframes particleFloat {
-    0%,100% {
-        transform: translateY(0) scale(1);
-        opacity: .35;
-    }
-    50% {
-        transform: translateY(-12px) scale(1.4);
-        opacity: .9;
-    }
+.animaag-video-caption small {
+    font-family: "Orbitron", sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #93c5fd;
 }
 
 @media (max-width:760px) {
-    .animaag-3d-scene {
-        min-height: 270px;
-        margin-top: 10px;
+    .animaag-video-scene {
+        min-height: 260px;
     }
 
-    .animaag-ring:nth-child(2) {
-        width: 185px;
+    .animaag-video-caption {
+        bottom: 13px;
     }
 
-    .animaag-ring:nth-child(3) {
-        width: 170px;
-        height: 170px;
-    }
-
-    .animaag-ring:nth-child(4) {
-        width: 200px;
+    .animaag-video-caption small {
+        font-size: 6px;
     }
 }
 
@@ -1005,6 +886,10 @@ section {
     color: #4ade80;
 }
 
+.youtube {
+    color: #ff0000;
+}
+
 /* FOOTER */
 
 footer {
@@ -1255,6 +1140,19 @@ footer p {
 
             </a>
 
+                        <a
+                href="https://youtube.com/@aniket_ghadi"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link youtube"
+                aria-label="YouTube Channel">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.6 15.9V8.1l6.8 3.9-6.8 3.9z"/>
+                </svg>
+
+            </a>
+
         </div>
 
     </div>
@@ -1303,30 +1201,20 @@ footer p {
                 </div>
             </div>
 
-                        <div class="animaag-3d-scene">
+<div class="animaag-video-scene">
+    <video
+        class="animaag-intro-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto">
+        <source src="animaag-intro.mp4" type="video/mp4">
+    </video>
 
-                <div class="animaag-core">
+    <div class="animaag-video-overlay"></div>
 
-                    <div class="animaag-ring"></div>
-                    <div class="animaag-ring"></div>
-                    <div class="animaag-ring"></div>
-
-                    <img src="animaag.png" alt="AnimaaG">
-
-                    <span class="animaag-node one"></span>
-                    <span class="animaag-node two"></span>
-                    <span class="animaag-node three"></span>
-
-                </div>
-
-                <span class="animaag-particle"></span>
-                <span class="animaag-particle"></span>
-                <span class="animaag-particle"></span>
-                <span class="animaag-particle"></span>
-
-                <div class="animaag-core-label">ANIMAAG DIGITAL CORE</div>
-
-            </div>
+</div>
 
         </div>
 
