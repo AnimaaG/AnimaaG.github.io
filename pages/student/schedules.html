@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7fc">
+  <title>My Schedule | EduAdmin</title>
+
+  <link rel="stylesheet" href="../../css/app.css">
+
+  <script src="../../js/main.js" defer></script>
+  <script src="../../js/navigation.js" defer></script>
+  <script src="../../js/student-sidebar.js" defer></script>
+  <script type="module" src="../../js/student-schedules.js"></script>
+  <script type="module" src="../../js/account-menu.js"></script>
+</head>
+
+<body>
+  <div class="dashboard-layout">
+    <div id="student-sidebar-mount"></div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <button
+          type="button"
+          class="sidebar-toggle"
+          id="sidebar-toggle"
+          aria-label="Toggle navigation"
+          aria-controls="student-sidebar"
+          aria-expanded="false"
+        >☰</button>
+
+        <div>
+          <p class="eyebrow">STUDENT PORTAL</p>
+          <h1>My Schedule</h1>
+          <p>Plan your classes and stay up to date with your timetable.</p>
+        </div>
+      </header>
+
+      <div class="dashboard-content student-schedule-page">
+
+        <section class="dashboard-section">
+          <div class="section-heading">
+            <div>
+              <h2>Your Class Overview</h2>
+              <p>Keep track of your upcoming lessons and class timings.</p>
+            </div>
+          </div>
+
+          <div class="stats-grid student-schedule-stats">
+            <article class="stat-card">
+              <p class="stat-label">Upcoming Sessions</p>
+              <h3 id="schedule-upcoming-count">—</h3>
+              <p class="stat-description">Classes scheduled ahead</p>
+            </article>
+
+            <article class="stat-card">
+              <p class="stat-label">Today's Subject</p>
+              <h3 id="schedule-today-count">—</h3>
+              <p class="stat-description">Sessions scheduled for today</p>
+            </article>
+
+            <article class="stat-card">
+              <p class="stat-label">Next Class</p>
+              <h3 id="schedule-next-class">—</h3>
+              <p class="stat-description" id="schedule-next-detail">
+                Your next scheduled lesson
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="dashboard-section student-timetable-section">
+          <div class="section-heading">
+            <div>
+              <h2>Class Timetable</h2>
+              <p>Find your classes by name, subject, teacher, or date.</p>
+            </div>
+          </div>
+
+          <div class="table-toolbar student-schedule-toolbar">
+            <div class="form-group">
+              <label for="student-schedule-search">Search classes</label>
+              <input
+                type="search"
+                id="student-schedule-search"
+                placeholder="Search classes, subjects or teachers"
+                autocomplete="off"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="student-schedule-date">Choose a date</label>
+              <input type="date" id="student-schedule-date">
+            </div>
+
+            <div class="student-schedule-reset">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="student-schedule-reset"
+              >Clear filters</button>
+            </div>
+          </div>
+
+          <div class="table-container student-schedule-table-container">
+            <table class="data-table student-schedule-table">
+              <thead>
+             <tr>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Class</th>
+              <th>Subject</th>
+              <th>Teacher</th>
+              <th>Time</th>
+              <th>Link</th>
+              <th>Status</th>
+            </tr>
+              </thead>
+
+              <tbody id="student-schedules-table-body">
+                <tr>
+                  <td colspan="7" class="empty-state">
+                    <strong>Loading your timetable…</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            id="student-schedule-message"
+            class="student-schedule-message"
+            role="status"
+            hidden
+          ></div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

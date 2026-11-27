@@ -1,1258 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AnimaaG — Software, Apps, Websites & Digital Tools</title>
-
-<meta name="description" content="AnimaaG creates practical software, Android applications, web tools, games.Turning ideas into interactive digital experiences.">
-<meta name="keywords" content="AnimaaG, apps, websites, games, Android apps, web development, game development, software">
-<meta name="author" content="AnimaaG">
-
-<meta property="og:title" content="AnimaaG — Software, Apps & Digital Tools">
-<meta property="og:description" content="Practical software, applications and digital tools created by AnimaaG.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://animaag.github.io/">
-
-<meta name="theme-color" content="#080b12">
-
-<style>
-   @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@500;700;800&display=swap');
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at 8% 5%, rgba(59,130,246,.14), transparent 25%),
-        radial-gradient(circle at 92% 35%, rgba(139,92,246,.10), transparent 25%),
-        #080b12;
-    color: #f8fafc;
-    line-height: 1.5;
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.container {
-    width: min(1040px, calc(100% - 32px));
-    margin: auto;
-}
-
-/* HEADER */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(8,11,18,.86);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255,255,255,.07);
-}
-
-.header-inner {
-    min-height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    font-size: 21px;
-    font-weight: 800;
-    letter-spacing: -.4px;
-}
-
-.brand img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 10px;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    color: #9ca8bb;
-    font-size: 13px;
-}
-
-.nav-links a {
-    transition: .2s ease;
-}
-
-.nav-links a:hover {
-    color: #fff;
-}
-
-.email {
-    color: #cbd5e1;
-    font-size: 13px;
-    transition: .2s ease;
-}
-
-.email:hover {
-    color: #60a5fa;
-}
-
-/* HERO */
-
-.hero {
-    padding: 72px 0 55px;
-    border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.3fr .7fr;
-    align-items: center;
-    gap: 55px;
-}
-
-.hero-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #8fbaff;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 17px;
-}
-
-.hero-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 12px rgba(74,222,128,.8);
-}
-
-.hero h1 {
-    font-size: clamp(42px, 7vw, 67px);
-    line-height: 1;
-    letter-spacing: -3px;
-    margin-bottom: 19px;
-}
-
-.gradient {
-    background: linear-gradient(90deg,#60a5fa,#8b5cf6,#d946ef);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.hero-text {
-    max-width: 620px;
-    color: #9ca8bb;
-    font-size: 17px;
-}
-
-.hero-logo-box {
-    display: flex;
-    justify-content: center;
-}
-
-.hero-logo-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-}
-
-.hero-connect {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hero-connect-title {
-    color: #f8fafc;
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.hero-connect .social-icons {
-    display: flex;
-    gap: 8px;
-}
-
-.hero-connect .social-link {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-}
-
-.hero-connect .social-link svg {
-    width: 18px;
-    height: 18px;
-}
-
-.hero-logo-box img {
-    width: 185px;
-    height: 185px;
-    object-fit: contain;
-    filter: drop-shadow(0 20px 45px rgba(59,130,246,.25));
-}
-
-.hero-logo-box img {
-    width: 185px;
-    height: 185px;
-    object-fit: contain;
-    filter: drop-shadow(0 20px 45px rgba(59,130,246,.25));
-}
-
-/* SECTION */
-
-section {
-    padding: 52px 0;
-}
-
-.section-title {
-    margin-bottom: 23px;
-}
-
-.section-label {
-    color: #60a5fa;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-}
-
-.section-title h2 {
-    font-size: 31px;
-    letter-spacing: -1px;
-}
-
-/* ABOUT */
-
-.about-section {
-    padding: 55px 0 45px;
-}
-
-.section-title {
-    margin-bottom: 27px;
-}
-
-.section-title p {
-    color: #8996aa;
-    max-width: 680px;
-    margin-top: 8px;
-    font-size: 14px;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.35fr .65fr;
-    gap: 18px;
-}
-
-.about-main {
-    min-height: 245px;
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,.08);
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(59,130,246,.16),
-            transparent 35%
-        ),
-        rgba(255,255,255,.025);
-}
-
-.about-brand-mark {
-    flex: 0 0 105px;
-    width: 105px;
-    height: 105px;
-    display: grid;
-    place-items: center;
-    border-radius: 24px;
-    background: rgba(0,0,0,.25);
-    border: 1px solid rgba(255,255,255,.08);
-}
-
-.about-brand-mark img {
-    width: 82px;
-    height: 82px;
-    object-fit: cover;
-    border-radius: 18px;
-    display: block;
-}
-
-.about-main h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.about-main p {
-    color: #9ba8bb;
-    font-size: 14px;
-}
-
-.about-main p + p {
-    margin-top: 9px;
-}
-
-.animaag-video-scene {
-    min-height: 245px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,.07);
-    background: #080b12;
-    box-shadow:
-        inset 0 0 50px rgba(59,130,246,.06),
-        0 20px 50px rgba(0,0,0,.2);
-}
-
-.animaag-intro-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-}
-
-.animaag-video-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(
-            180deg,
-            rgba(8,11,18,.04),
-            rgba(8,11,18,.18)
-        ),
-        radial-gradient(
-            circle at 50% 50%,
-            transparent 35%,
-            rgba(8,11,18,.2) 100%
-        );
-}
-
-.animaag-video-caption {
-    position: absolute;
-    left: 18px;
-    right: 18px;
-    bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.animaag-video-caption span {
-    font-family: "Bungee", sans-serif;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    color: #f8fafc;
-    text-shadow: 0 0 15px rgba(96,165,250,.55);
-}
-
-.animaag-video-caption small {
-    font-family: "Orbitron", sans-serif;
-    font-size: 7px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #93c5fd;
-}
-
-@media (max-width:760px) {
-    .animaag-video-scene {
-        min-height: 260px;
-    }
-
-    .animaag-video-caption {
-        bottom: 13px;
-    }
-
-    .animaag-video-caption small {
-        font-size: 6px;
-    }
-}
-
-/* SHOWCASE */
-
-.showcase-section {
-    padding: 30px 0 20px;
-}
-
-.showcase {
-    min-height: 310px;
-    display: grid;
-    grid-template-columns: .9fr 1.1fr;
-    gap: 55px;
-    align-items: center;
-    padding: 35px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 22px;
-    border: 1px solid rgba(255,255,255,.07);
-    background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(139,92,246,.15),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(20,31,57,.9),
-            rgba(15,18,34,.95)
-        );
-}
-
-.showcase-visual {
-    height: 235px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.visual-glow {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: linear-gradient(
-        135deg,
-        rgba(59,130,246,.35),
-        rgba(168,85,247,.3)
-    );
-    filter: blur(35px);
-}
-
-.visual-window {
-    position: relative;
-    width: 220px;
-    padding: 13px;
-    border-radius: 17px;
-    border: 1px solid rgba(255,255,255,.12);
-    background: #0b1020;
-    box-shadow: 0 25px 60px rgba(0,0,0,.35);
-    transform: rotate(-3deg);
-}
-
-.window-top {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 12px;
-}
-
-.window-top span {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #64748b;
-}
-
-.visual-lines {
-    margin-top: 11px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.visual-lines span {
-    height: 5px;
-    border-radius: 10px;
-    background: #1e293b;
-}
-
-.visual-lines span:first-child {
-    width: 70%;
-}
-
-.visual-lines span:nth-child(2) {
-    width: 90%;
-}
-
-.visual-lines span:last-child {
-    width: 45%;
-}
-
-.showcase-content h2 {
-    font-size: 31px;
-    line-height: 1.15;
-    letter-spacing: -1px;
-    margin-bottom: 12px;
-}
-
-.showcase-content > p {
-    max-width: 510px;
-    color: #98a5b8;
-    font-size: 14px;
-}
-
-.check-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 22px;
-}
-
-.check-list div {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 8px 11px;
-    border-radius: 9px;
-    background: rgba(255,255,255,.045);
-    border: 1px solid rgba(255,255,255,.06);
-}
-
-.check-list span {
-    color: #4ade80;
-    font-size: 12px;
-}
-
-.check-list p {
-    color: #aeb8c9;
-    font-size: 11px;
-}
-
-
-/* TOOLS */
-.tools-section {
-    padding: 25px 0 2px;
-    border-top: 1px solid rgba(255,255,255,.06);
-}
-
-.tool-card{
-    display:flex;
-    flex-direction:column;
-    padding:16px;
-    border-radius:16px;
-    border:1px solid rgba(255,255,255,.08);
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(59,130,246,.12),
-            transparent 35%
-        ),
-        rgba(255,255,255,.025);
-    transition:.25s ease;
-}
-
-.tool-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(96,165,250,.3);
-    box-shadow: 0 20px 50px rgba(0,0,0,.25);
-}
-
-.tool-type {
-    color: #60a5fa;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    margin-bottom: 5px;
-}
-
-.tool-content h3{
-    font-size:18px;
-    margin-bottom: 6px;
-}
-
-.tool-content p{
-    color:#96a3b7;
-    font-size:12px;
-    line-height:1.5;
-}
-
-.tool-tags{
-    display:flex;
-    gap:6px;
-    margin-top:10px;
-}
-
-.tool-tags span {
-    padding: 5px 8px;
-    border-radius: 7px;
-    background: rgba(255,255,255,.05);
-    color: #8d9aae;
-    font-size: 10px;
-}
-
-.tool-button{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    width:100%;
-    margin-top:14px;
-    padding:10px 14px;
-    border-radius:10px;
-    background:linear-gradient(135deg,#2563eb,#4f46e5);
-    color:white;
-    font-size:12px;
-    font-weight:700;
-    white-space:nowrap;
-    transition:.2s ease;
-}
-
-.tool-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37,99,235,.25);
-}
-
-.tool-button span {
-    font-size: 16px;
-}
-
-
-.digital-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-}
-
-.app-card{
-    display:flex;
-    flex-direction:column;
-    padding:16px;
-    border-radius:16px;
-    border:1px solid rgba(255,255,255,.08);
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(59,130,246,.12),
-            transparent 35%
-        ),
-        rgba(255,255,255,.025);
-    transition:.25s ease;
-}
-
-.app-card:hover{
-    transform:translateY(-3px);
-    border-color:rgba(96,165,250,.3);
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
-}
-
-.app-header{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.app-icon{
-    width:58px;
-    height:58px;
-    flex:0 0 58px;
-    border-radius:14px;
-    object-fit:cover;
-    background:#111827;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.app-name{
-    font-size:18px;
-    font-weight:800;
-    color:#fff;
-}
-
-.app-platform{
-    margin-top:3px;
-    color:#60a5fa;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1.3px;
-    text-transform:uppercase;
-}
-
-.app-description{
-    margin-top:12px;
-    color:#96a3b7;
-    font-size:12px;
-    line-height:1.5;
-    min-height:54px;
-}
-
-.app-meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-top:10px;
-}
-
-.app-meta span{
-    padding:5px 8px;
-    border-radius:7px;
-    background:rgba(255,255,255,.05);
-    color:#9aa6b8;
-    font-size:10px;
-}
-
-.app-store-button{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    margin-top:14px;
-    padding:10px 14px;
-    border-radius:10px;
-    background:linear-gradient(135deg,#2563eb,#4f46e5);
-    color:#fff;
-    font-size:12px;
-    font-weight:700;
-    transition:.2s ease;
-}
-
-.app-store-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 25px rgba(37,99,235,.25);
-}
-
-.app-store-button span{
-    font-size:15px;
-}
-
-
-@media (max-width:760px){
-    .digital-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-/* CONNECT */
-
-.connect-section {
-    padding: 30px 0 55px;
-}
-
-.connect-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 28px 32px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,.07);
-    background:
-        linear-gradient(
-            110deg,
-            rgba(59,130,246,.09),
-            rgba(139,92,246,.09)
-        ),
-        rgba(255,255,255,.025);
-}
-
-.connect-content h2 {
-    font-size: 27px;
-    margin-bottom: 4px;
-}
-
-.connect-content p {
-    color: #8f9caf;
-    font-size: 13px;
-}
-
-.social-icons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.social-link {
-    width: 50px;
-    height: 50px;
-    display: grid;
-    place-items: center;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,.09);
-    background: rgba(255,255,255,.045);
-    transition: .25s ease;
-}
-
-.social-link:hover {
-    transform: translateY(-4px);
-    background: rgba(255,255,255,.09);
-}
-
-.social-link svg {
-    width: 23px;
-    height: 23px;
-    fill: currentColor;
-}
-
-.instagram {
-    color: #f472b6;
-}
-
-.facebook {
-    color: #60a5fa;
-}
-
-.play {
-    color: #4ade80;
-}
-
-.youtube {
-    color: #ff0000;
-}
-
-/* FOOTER */
-
-footer {
-    border-top: 1px solid rgba(255,255,255,.06);
-    padding: 20px 0;
-    text-align: center;
-}
-
-footer p {
-    color: #667085;
-    font-size: 11px;
-}
-
-/* MOBILE */
-
-@media (max-width: 760px) {
-
-    .header-inner {
-        min-height: 62px;
-    }
-
-    .header-right {
-        gap: 0;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .email {
-        font-size: 11px;
-    }
-
-    .hero {
-        padding: 52px 0 45px;
-    }
-
-    .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
-    }
-
-    .hero-logo-box {
-        order: -1;
-    }
-
-    .hero-logo-box img {
-        width: 110px;
-        height: 110px;
-    }
-
-    .hero-text {
-        margin: auto;
-        font-size: 15px;
-    }
-
-    .hero h1 {
-        font-size: 47px;
-        letter-spacing: -2px;
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-main {
-        min-height: auto;
-    }
-
-    .showcase {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 25px;
-    }
-
-    .showcase-visual {
-        height: 190px;
-    }
-
-    .showcase-content h2 {
-        font-size: 27px;
-    }
-
-    .tool-preview {
-        height: 150px;
-    }
-
-    .tool-button {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .connect-box {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .social-icons {
-        width: 100%;
-    }
-
-    .social-link {
-        flex: 1;
-    }
-
-    section {
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
-}
-
-@media (max-width: 450px) {
-
-    .container {
-        width: calc(100% - 24px);
-    }
-
-    .brand {
-        font-size: 18px;
-    }
-
-    .brand img {
-        width: 36px;
-        height: 36px;
-    }
-
-    .email {
-        font-size: 11px;
-    }
-
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .hero-logo-box img {
-        width: 95px;
-        height: 95px;
-    }
-
-    .section-title h2 {
-        font-size: 27px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your academy, teachers, students, attendance, study materials and fees with EduAdmin.">
+    <meta name="google-site-verification" content="GkoeRGWhJYyE75hJNE8dZerdgvnT0XUMlaoepwh8His" />
+    <title>EduAdmin | Academy Management</title>
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/ads.css">
 </head>
 
 <body>
-
-<header>
-    <div class="container header-inner">
-
-        <a href="#top" class="brand">
-            <img src="animaag.png" alt="AnimaaG">
-            <span>AnimaaG</span>
+    <header class="main-header">
+        <a href="index.html" class="brand" aria-label="EduAdmin home">
+            <span>EduAdmin</span>
         </a>
 
-        <div class="header-right">
-
-            <nav class="nav-links">
-                <a href="#about">About</a>
-                <a href="#tools">Tools</a>
-            </nav>
-
-            <a
-                href="mailto:aniketghadi01099@gmail.com"
-                class="email">
-                aniketghadi010@gmail.com
-            </a>
-
-        </div>
-
-    </div>
-</header>
-
-
-<main id="top">
-
-    <section class="hero">
-        <div class="container hero-grid">
-
-            <div>
-
-                <div class="hero-label">
-                    <span class="hero-dot"></span>
-                    Software • Apps • Games • Websites • Digital Tools
-                </div>
-
-                <h1>
-                    <span class="gradient">Ideas into interactive experiences</span><br>
-                </h1>
-
-                <p class="hero-text">
-                    AnimaaG turns ideas into apps, websites and games —
-                    building digital experiences from concept to something
-                    people can actually use, explore and play.
-                </p>
-
+            <!-- Header Banner: 320x50 -->
+            <div class="edu-ad-slot edu-ad-fitted edu-ad-header"
+                data-ad-type="header-banner-320"
+                aria-label="Advertisement">
             </div>
 
-            <div class="hero-logo-box">
-
-    <div class="hero-connect">
-
-        <div class="section-label">ANIMAAG ONLINE</div>
-
-        <div class="hero-connect-title">Connect</div>
-
-        <div class="social-icons">
-
-            <a
-                href="https://www.instagram.com/animaag1029/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link instagram"
-                aria-label="Instagram">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-3-3z"/>
-                </svg>
-
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="#features">Features</a>
+            <a href="pages/login.html">Login</a>
+            <a href="pages/register.html" class="btn btn-primary">
+                Get Started
             </a>
+        </nav>
+    </header>
 
-            <a
-                href="https://www.facebook.com/share/19WkU6dErS/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link facebook"
-                aria-label="Facebook">
+   
 
-                <svg viewBox="0 0 24 24">
-                    <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.87.24-1.46 1.5-1.46h1.7V4.95c-.3-.04-1.33-.13-2.54-.13-2.51 0-4.23 1.53-4.23 4.34V11H7.1v3h2.83v8h3.57z"/>
-                </svg>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="status-badge active">ACADEMY MANAGEMENT</span>
 
-            </a>
+                <h1>Manage your academy in one place.</h1>
 
-            <a
-                href="https://play.google.com/store/apps/dev?id=5292838176432126848"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link play"
-                aria-label="Google Play">
+                <p>
+                    Organize classes, manage teachers and students, track
+                    attendance, share study materials, schedule lessons,
+                    and record fee payments through one management system.
+                </p>
 
-                <svg viewBox="0 0 24 24">
-                    <path d="M3.5 2.7c-.31.33-.5.84-.5 1.48v15.64c0 .64.19 1.15.5 1.48L13.05 12 3.5 2.7zm10.25 10.02L5.02 4.2l9.8 5.58L16.9 12l-3.15.72zm1.07.97l3.08 1.75-10.03 5.7 6.95-7.45zm4.02-2.28l2.07 1.18c.68.39.68.97 0 1.36l-2.07 1.18L15.67 12l3.17-.59z"/>
-                </svg>
+                <div class="hero-actions">
+                    <a href="pages/register.html" class="btn btn-primary">
+                        Create an Account
+                    </a>
 
-            </a>
-
-                        <a
-                href="https://youtube.com/@aniket_ghadi"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link youtube"
-                aria-label="YouTube Channel">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.6 15.9V8.1l6.8 3.9-6.8 3.9z"/>
-                </svg>
-
-            </a>
-
-        </div>
-
-    </div>
-
-    <img src="animaag.png" alt="AnimaaG">
-
-</div>
-
-        </div>
-    </section>
-
-
-<section id="about" class="about-section">
-    <div class="container">
-
-        <div class="section-title">
-            <div class="section-label">ABOUT ANIMAAG</div>
-            <h2>Imagine it. We make it real.</h2>
-            <p>
-                AnimaaG builds apps, websites and games that turn ideas
-                into real, interactive experiences.
-                Also, creates software designed
-                to solve practical problems without unnecessary complexity.
-            </p>
-        </div>
-
-        <div class="about-grid">
-
-            <div class="about-main">
-                <div class="about-brand-mark">
-                    <img src="animaag_logo.png" alt="AnimaaG">
-                </div>
-
-                <div>
-                    <h3>Independent software development</h3>
-
-                    <p>
-                        AnimaaG is an independent technology brand focused
-                        on building websites, mobile applications and games.
-                    </p>
-
-                    <p>
-                        Every project starts with an idea and ends with something
-                        people can use, explore or play.
-                    </p>
+                    <a href="pages/login.html" class="secondary-button">
+                        Sign In
+                    </a>
                 </div>
             </div>
 
-<div class="animaag-video-scene">
-    <video
-        class="animaag-intro-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto">
-        <source src="animaag-intro.mp4" type="video/mp4">
-    </video>
-
-    <div class="animaag-video-overlay"></div>
-
-</div>
-
-        </div>
-
-    </div>
-</section>
-
-<section id="tools" class="tools-section">
-
-    <div class="container">
-
-        <div class="section-title">
-          <div class="section-label">DIGITAL PRODUCTS</div>
-            <h2>Explore AnimaaG products.</h2>
-            <p>
-                Software, applications and digital tools created by AnimaaG.
-            </p>
-        </div>
-
-        <div class="digital-grid">
-
-
-            <article class="app-card">
-                <div class="app-header">
-                    <img
-                        class="app-icon"
-                        src="https://play-lh.googleusercontent.com/kC6E6aa0hz733MJOkiB9zQdC0VJuj7-qvVInTeHFZwUzaScijQHYYakoluXm374uUpLNgZR3OuJeW3Tmum_rAA=w240-h480"
-                        alt="Old days app icon">
-
-                    <div>
-                        <div class="app-name">Old days</div>
-                        <div class="app-platform">Google Play</div>
-                    </div>
-                </div>
-
-                <p class="app-description">
-                    Step back in time and experience the magic of the Old Days.
-                    A retro-inspired arcade experience built around classic
-                    Nokia-style games and nostalgic gameplay.
+            <div class="hero-preview card">
+                <span class="welcome-label">EDUADMIN OVERVIEW</span>
+                <h2>Your academy, organized.</h2>
+                <p>
+                    A central place for everyday academy administration.
                 </p>
 
-                <div class="app-meta">
-                    <span>Arcade</span>
-                    <span>Android</span>
-                    <span>Contains ads</span>
-                </div>
-
-                <a
-                    class="app-store-button"
-                    href="https://play.google.com/store/apps/details?id=com.olddays.nokia&pcampaignid=web_share"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Google Play
-                    <span>↗</span>
-                </a>
-            </article>
-
-            <article class="app-card">
-                <div class="app-header">
-                   <img
-                        class="app-icon"
-                        src="https://docstore-ak.indusappstore.com/external/indus-images/preview_images/c1e59db69db563027c335ca1f731e6b3.webp"
-                        alt="Care Circle app icon">
+                <div class="preview-stats">
                     <div>
-                        <div class="app-name">Care Circle</div>
-                        <div class="app-platform">Indus Appstore</div>
+                        <strong>Students</strong>
+                        <span>Enrollment management</span>
+                    </div>
+                    <div>
+                        <strong>Teachers</strong>
+                        <span>Staff and class assignments</span>
+                    </div>
+                    <div>
+                        <strong>Attendance</strong>
+                        <span>Attendance records</span>
+                    </div>
+                    <div>
+                        <strong>Fees</strong>
+                        <span>Payment tracking</span>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <p class="app-description">
-                    Care Circle is an Android application available through
-                    the official Indus Appstore listing.
+         <!-- Top Split Row: Native Ad (Left) + Banner 1 / 728x90 (Right) -->
+    <div class="edu-ad-top-row" aria-label="Sponsored">
+        <div class="edu-ad-slot edu-ad-fitted edu-ad-left" data-ad-type="native"></div>
+        <div class="edu-ad-slot edu-ad-fitted edu-ad-right" data-ad-type="top-banner-728"></div>
+    </div>
+
+        <section class="features-section" id="features">
+            <div class="features-heading">
+                <h2>Everything your academy needs</h2>
+                <p>
+                    Separate workflows for administrators, teachers,
+                    and students.
                 </p>
+            </div>
 
-                <div class="app-meta">
-                    <span>Android</span>
-                    <span>Indus Appstore</span>
-                </div>
+            <div class="features">
+                <article class="feature-card">
+                    <span class="feature-icon purple">▦</span>
+                    <h3>Academy Administration</h3>
+                    <p>
+                        Manage classes, teachers, students, settings,
+                        and academy operations.
+                    </p>
+                </article>
 
-                <a
-                    class="app-store-button"
-                    href="https://indusapp.store/9hc6ta9s"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Indus Appstore
-                    <span>↗</span>
-                </a>
-            </article>
+                <article class="feature-card">
+                    <span class="feature-icon blue">✓</span>
+                    <h3>Attendance and Schedules</h3>
+                    <p>
+                        Keep attendance records and lesson schedules
+                        organized in one place.
+                    </p>
+                </article>
 
-        </div>
+                <article class="feature-card">
+                    <span class="feature-icon green">▣</span>
+                    <h3>Study Materials</h3>
+                    <p>
+                        Organize learning resources for teachers
+                        and students.
+                    </p>
+                </article>
 
-    </div>
-</section>
+                <article class="feature-card">
+                    <span class="feature-icon orange">₹</span>
+                    <h3>Fee Tracking</h3>
+                    <p>
+                        Record fees, payments, and outstanding balances
+                        manually.
+                    </p>
+                </article>
 
-</main>
+                <article class="feature-card">
+                    <span class="feature-icon purple">♙</span>
+                    <h3>Teacher Workspace</h3>
+                    <p>
+                        Give teachers access to their assigned classes
+                        and teaching tasks.
+                    </p>
+                </article>
 
+                <article class="feature-card">
+                    <span class="feature-icon blue">♧</span>
+                    <h3>Student Workspace</h3>
+                    <p>
+                        Let students view their attendance, materials,
+                        schedules, and payment records.
+                    </p>
+                </article>
+            </div>
+        </section>
 
-<footer>
-    <div class="container">
-        <p>© 2026 AnimaaG. All rights reserved.</p>
-    </div>
-</footer>
+        <section class="landing-cta">
+            <h2>Ready to organize your academy?</h2>
+            <p>Create an account to get started with EduAdmin.</p>
+            <a href="pages/register.html" class="btn btn-primary">
+                Get Started
+            </a>
+        </section>
 
+        <!-- Bottom Split Row: 300x250 (Left) + 468x60 (Right) -->
+            <div class="edu-ad-bottom-row" aria-label="Advertisement">
+
+                <div class="edu-ad-slot edu-ad-fitted edu-ad-bottom-left"
+                    data-ad-type="bottom-left-300"></div>
+
+                <div class="edu-ad-slot edu-ad-fitted edu-ad-bottom-right"
+                    data-ad-type="banner-468"></div>
+
+            </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 EduAdmin. Academy Management System.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/web-ads.js" defer></script>
 </body>
 </html>
-
-
-

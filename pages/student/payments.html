@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fees & Payments | EduAdmin</title>
+  <link rel="stylesheet" href="../../css/app.css">
+
+  <script src="../../js/main.js" defer></script>
+  <script src="../../js/navigation.js" defer></script>
+  <script src="../../js/student-sidebar.js" defer></script>
+  <script type="module" src="../../js/student-payments.js"></script>
+  <script type="module" src="../../js/account-menu.js"></script>
+
+  <style>
+    .fee-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1.25rem 0;
+      padding: .75rem;
+      background: var(--card-bg, #fff);
+      border: 1px solid var(--border-color, #e5e7eb);
+      border-radius: 14px;
+    }
+
+    .fee-tab {
+      border: 1px solid var(--border-color, #d1d5db);
+      border-radius: 9px;
+      padding: .7rem 1rem;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 600;
+    }
+
+    .fee-tab[aria-selected="true"] {
+      background: var(--primary-color, #2563eb);
+      color: #fff;
+      border-color: var(--primary-color, #2563eb);
+    }
+
+    .fee-tab-panel[hidden] {
+      display: none !important;
+    }
+
+    #student-installment-group[hidden],
+    #student-upi-qr-section[hidden] {
+      display: none !important;
+    }
+
+    .payment-note {
+      padding: .85rem 1rem;
+      border: 1px solid #dbeafe;
+      border-radius: 10px;
+      margin: .75rem 0;
+    }
+
+    .fee-installment-row > td {
+      padding: 1rem;
+      background: var(--card-bg, #f8fafc);
+    }
+
+    .fee-installment-details h4 {
+      margin: 0 0 .75rem;
+      font-size: .95rem;
+    }
+
+    .fee-installment-details .table-container {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .fee-installment-details table {
+      width: 100%;
+      min-width: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard-layout">
+    <div id="student-sidebar-mount"></div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <button
+          type="button"
+          class="sidebar-toggle"
+          id="sidebar-toggle"
+          aria-label="Toggle navigation"
+          aria-controls="student-sidebar"
+          aria-expanded="false"
+        >☰</button>
+
+        <div>
+          <p class="eyebrow">STUDENT PORTAL</p>
+          <h1>Fees & Payments</h1>
+          <p>Review fee balances, scheduled installments and payment history.</p>
+        </div>
+      </header>
+
+      <p id="student-payment-message"
+        class="form-message"
+        role="status"
+        aria-live="polite"></p>
+
+      <section class="dashboard-section"><section class="dashboard-section">
+        <div class="section-heading">
+          <div>
+            <h2>Payment Overview</h2>
+            <p>Approved payments are reflected in your paid amount.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <p class="stat-label">Total Fees</p>
+            <h3 id="student-total-fees">₹0.00</h3>
+          </article>
+
+          <article class="stat-card">
+            <p class="stat-label">Amount Paid</p>
+            <h3 id="student-amount-paid">₹0.00</h3>
+          </article>
+
+          <article class="stat-card">
+            <p class="stat-label">Outstanding Balance</p>
+            <h3 id="student-outstanding-balance">₹0.00</h3>
+          </article>
+        </div>
+
+        <!-- NEW: Upcoming Due Payment Card -->
+        <article class="stat-card" style="margin-top: 1rem; background: #f8fafc; border: 1px solid #e2e8f0;">
+          <p class="stat-label">Upcoming / Nearest Due Payment</p>
+          <h3 id="student-upcoming-due-amount" style="color: #2563eb; font-size: 1.25rem;">—</h3>
+          <p id="student-upcoming-due-info" style="margin-top: 0.25rem; color: #64748b; font-size: 0.875rem;">Loading upcoming dues...</p>
+        </article>
+      </section>
+
+      <!-- TAB NAVIGATION -->
+      <nav class="fee-tabs" role="tablist" aria-label="Student payment sections">
+        <button class="fee-tab" id="tab-assigned" type="button"
+          role="tab" aria-selected="true" aria-controls="panel-assigned"
+          data-fee-tab="panel-assigned">Assigned Fees</button>
+
+        <button class="fee-tab" id="tab-history" type="button"
+          role="tab" aria-selected="false" aria-controls="panel-history"
+          data-fee-tab="panel-history">Payment History</button>
+
+        <button class="fee-tab" id="tab-upi" type="button"
+          role="tab" aria-selected="false" aria-controls="panel-upi"
+          data-fee-tab="panel-upi">UPI Payment Instructions</button>
+
+        <button class="fee-tab" id="tab-submit" type="button"
+          role="tab" aria-selected="false" aria-controls="panel-submit"
+          data-fee-tab="panel-submit">Submit Payment Details</button>
+      </nav>
+
+      <!-- TAB 1: ASSIGNED FEES -->
+      <section class="dashboard-section fee-tab-panel"
+        id="panel-assigned" role="tabpanel" aria-labelledby="tab-assigned">
+
+        <div class="section-heading">
+          <div>
+            <h2>Assigned Fees</h2>
+            <p>All fee assignments and installment schedules assigned to you.</p>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Fee Type</th>
+                <th>Description</th>
+                <th>Assigned</th>
+                <th>Paid</th>
+                <th>Balance</th>
+                <th>Due Date</th>
+                <th>Plan</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="student-assigned-fees-body">
+              <tr><td colspan="8">Loading assigned fees...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 2: PAYMENT HISTORY -->
+      <section class="dashboard-section fee-tab-panel"
+        id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden>
+
+        <div class="section-heading">
+          <div>
+            <h2>Payment History</h2>
+            <p>Your submitted payments and their review status.</p>
+          </div>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="form-group">
+            <label for="student-payment-search">Search payments</label>
+            <input type="search" id="student-payment-search"
+              placeholder="Search by reference or description">
+          </div>
+
+          <div class="form-group">
+            <label for="student-payment-status-filter">Payment status</label>
+            <select id="student-payment-status-filter">
+              <option value="">All statuses</option>
+              <option value="pending">Pending review</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Installment</th>
+                <th>Amount</th>
+                <th>Payment Reference</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="student-payments-table-body">
+              <tr><td colspan="6">Loading payment history...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 3: UPI INSTRUCTIONS -->
+      <section class="dashboard-section fee-tab-panel"
+        id="panel-upi" role="tabpanel" aria-labelledby="tab-upi" hidden>
+
+        <div class="section-heading">
+          <div>
+            <h2>UPI Payment Instructions</h2>
+            <p>Use only payment details officially provided by your institution.</p>
+          </div>
+        </div>
+
+        <div id="student-upi-qr-section" hidden>
+          <p><strong>Scan to pay</strong></p>
+          <div id="student-upi-qr" aria-label="UPI payment QR code"></div>
+          <p id="student-upi-qr-amount"></p>
+        </div>
+
+        <div class="form-help">
+          <p><strong>UPI ID:</strong>
+            <span id="student-academy-upi">Loading...</span>
+          </p>
+          <p><strong>Payee name:</strong>
+            <span id="student-academy-payee">Loading...</span>
+          </p>
+          <p>
+            Confirm the recipient and amount with your institution before
+            making a payment. Submitting details does not mean the payment
+            has been approved.
+          </p>
+        </div>
+      </section>
+
+      <!-- TAB 4: SUBMIT PAYMENT -->
+      <section class="dashboard-section fee-tab-panel"
+        id="panel-submit" role="tabpanel" aria-labelledby="tab-submit" hidden>
+
+        <div class="section-heading">
+          <div>
+            <h2>Submit Payment Details</h2>
+            <p>Submit your transaction reference for academy verification.</p>
+          </div>
+        </div>
+
+        <form id="student-payment-form">
+          <div class="form-grid">
+            <div class="form-group form-group-full">
+              <label for="student-fee-select">Fee to pay</label>
+              <select id="student-fee-select" required>
+                <option value="">Loading your outstanding fees...</option>
+              </select>
+            </div>
+
+            <div class="form-group form-group-full"
+              id="student-installment-group" hidden>
+              <label for="student-installment-select">Installment to pay</label>
+              <select id="student-installment-select">
+                <option value="">Select an installment</option>
+              </select>
+              <small id="student-installment-help">
+                Select the scheduled installment you are paying.
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="student-payment-amount">Payment amount (₹)</label>
+              <input
+                type="number"
+                id="student-payment-amount"
+                name="amount"
+                min="0.01"
+                step="0.01"
+                required
+                placeholder="Enter amount">
+            </div>
+
+            <div class="form-group">
+              <label for="student-payment-method">Payment method</label>
+              <select id="student-payment-method" name="method" required>
+                <option value="">Select payment method</option>
+                <option value="upi">UPI</option>
+                <option value="bank-transfer">Bank transfer</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="student-payment-reference">Transaction reference</label>
+              <input
+                type="text"
+                id="student-payment-reference"
+                name="reference"
+                required
+                maxlength="120"
+                placeholder="Enter transaction reference">
+            </div>
+
+            <div class="form-group">
+              <label for="student-payment-date">Payment date</label>
+              <input
+                type="date"
+                id="student-payment-date"
+                name="paymentDate"
+                required>
+            </div>
+          </div>
+
+          <p class="payment-note">
+            Your submission remains pending until the academy verifies it.
+            Your fee balance will not decrease merely because you submitted
+            payment details.
+          </p>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              Submit Payment Details
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

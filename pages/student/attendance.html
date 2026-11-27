@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>My Attendance | EduAdmin</title>
+  <link rel="stylesheet" href="../../css/app.css">
+
+  <script src="../../js/main.js" defer></script>
+  <script src="../../js/navigation.js" defer></script>
+  <script src="../../js/student-sidebar.js" defer></script>
+  <script type="module" src="../../js/account-menu.js"></script>
+  <script type="module" src="../../js/student-attendance.js"></script>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <div id="student-sidebar-mount"></div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <button type="button" class="sidebar-toggle"
+          id="sidebar-toggle" aria-label="Toggle navigation"
+          aria-controls="student-sidebar" aria-expanded="false">☰</button>
+        <div>
+          <p class="eyebrow">STUDENT PORTAL</p>
+          <h1>My Attendance</h1>
+          <p>Mark your daily class attendance once per day.</p>
+        </div>
+      </header>
+
+      <section class="dashboard-section">
+        <div class="section-heading">
+          <div>
+            <h2>Today's Class Attendance</h2>
+            <p>Mark attendance once per day for your assigned class (if not already marked).</p>
+          </div>
+        </div>
+
+        <div class="form-group" style="max-width:520px">
+          <label for="attendance-session-select">Select today's class</label>
+          <select id="attendance-session-select" required>
+            <option value="">Loading today's classes…</option>
+          </select>
+        </div>
+
+        <div id="attendance-message" class="form-message" role="status"
+          aria-live="polite" hidden></div>
+
+        <div class="stats-grid" style="margin-top:20px">
+          <article class="stat-card">
+            <p class="stat-label">Assigned Class</p>
+            <h3 id="attendance-session-name">—</h3>
+            <p class="stat-description" id="attendance-session-time">
+              Choose a class
+            </p>
+          </article>
+
+          <article class="stat-card">
+            <p class="stat-label">Today's Status</p>
+            <h3 id="attendance-today-status">Not marked</h3>
+            <p class="stat-description" id="attendance-today-detail">
+              Mark attendance once today.
+            </p>
+          </article>
+
+          <article class="stat-card">
+            <p class="stat-label">Punch Time</p>
+            <h3 id="attendance-punch-time">—</h3>
+            <p class="stat-description">Recorded attendance punch time</p>
+          </article>
+
+          <article class="stat-card">
+            <p class="stat-label">Marked By</p>
+            <h3 id="attendance-marked-by">—</h3>
+            <p class="stat-description">Student or teacher</p>
+          </article>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
+          <button type="button" class="btn btn-primary"
+            id="attendance-checkin-button" disabled>Mark Attendance</button>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <div class="section-heading">
+          <div>
+            <h2>Today's Attendance Record</h2>
+            <p>Shows your attendance record, punch time, and any teacher edits.</p>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Status</th>
+                <th>Punch Time</th>
+                <th>Marked By</th>
+                <th>Original / Updated History</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-history-body">
+              <tr><td colspan="5" class="empty-state">
+                Loading attendance…
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <div class="section-heading">
+          <div>
+            <h2>Attendance History</h2>
+            <p>Your class attendance records, punch times, and edit history.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:20px; margin-bottom:20px;">
+          <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:end;">
+            <div class="form-group" style="flex:1; min-width:180px;">
+              <label for="history-start-date">Start date</label>
+              <input type="date" id="history-start-date">
+            </div>
+
+            <div class="form-group" style="flex:1; min-width:180px;">
+              <label for="history-end-date">End date</label>
+              <input type="date" id="history-end-date">
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="view-attendance-history-button"
+            >
+              View Attendance
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="last-10-days-button"
+            >
+              Last 10 Days
+            </button>
+          </div>
+
+          <p id="attendance-history-range-label"
+             class="stat-description"
+             style="margin-top:12px;"></p>
+
+          <div id="attendance-history-range-message"
+               class="form-message"
+               role="status"
+               aria-live="polite"
+               hidden></div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Class</th>
+                <th>Status</th>
+                <th>Punch Time</th>
+                <th>Marked By</th>
+                <th>Original / Updated History</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-history-range-body">
+              <tr>
+                <td colspan="6" class="empty-state">
+                  Loading your attendance history…
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
